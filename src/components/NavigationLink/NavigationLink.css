@@ -1,0 +1,4 @@
+.navigation-link-is-active {
+    font-weight: bold;
+    pointer-events: none;
+}
