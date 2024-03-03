@@ -6,9 +6,12 @@ import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import { AUTHORIZATION_TOKEN, URL_USER_SIGNIN } from "../../shared/constants";
 import toast, { Toaster } from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { changeUser } from "../../store/userSlice";
 
 export const Login = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const handleSignin = async () => {
         await fetchSignin();
@@ -33,7 +36,10 @@ export const Login = () => {
             }
             return response.json();
         }).then(data => {
-            //userStore.setState(true, data);
+            dispatch(changeUser({
+                loggedin: true,
+                user: data
+            }));
             navigate("/");
         }).catch(errorObject => {
             toast.error(errorObject.message.substring(18, errorObject.message.indexOf("!") + 1));
