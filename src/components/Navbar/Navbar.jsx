@@ -39,7 +39,7 @@ export const Navbar = () => {
     }
 
     const signoutClicked = () => {
-        console.log("signout clicked...");
+        navigate("/login");
     }
 
     const shoppingCartClicked = () => {

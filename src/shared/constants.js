@@ -1,3 +1,11 @@
+export const AUTHORIZATION_TOKEN = "71a3e5fe1b1899a3ec9541f735a1f2e14335fce9a35bca14b66709bbd95d6";
+
+export const ENVIRONMENT = "development";
+
+export const API_BASE_URL = ENVIRONMENT === "development" ? "https://localhost:7276/api" : "https://production/api";
+
+export const URL_USER_SIGNIN = `${API_BASE_URL}/User/signin`;
+
 export const countryList = [
     "Afghanistan",
     "Albania",

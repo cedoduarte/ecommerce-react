@@ -2,9 +2,44 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { PasswordTextField } from "../../components/PasswordTextField/PasswordTextField";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
+import { AUTHORIZATION_TOKEN, URL_USER_SIGNIN } from "../../shared/constants";
+import toast, { Toaster } from "react-hot-toast";
 
 export const Login = () => {
+    const navigate = useNavigate();
+
+    const handleSignin = async () => {
+        await fetchSignin();
+    }
+
+    const fetchSignin = async () => {
+        await fetch(URL_USER_SIGNIN, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": AUTHORIZATION_TOKEN
+            },
+            body: JSON.stringify({
+                usernameOrEmail: username,
+                password
+            })
+        }).then(response => {
+            if (!response.ok) {
+                return response.text().then(errorText => {
+                    throw new Error(errorText);
+                });
+            }
+            return response.json();
+        }).then(data => {
+            //userStore.setState(true, data);
+            navigate("/");
+        }).catch(errorObject => {
+            toast.error(errorObject.message.substring(18, errorObject.message.indexOf("!") + 1));
+        });
+    }
+
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -32,10 +67,11 @@ export const Login = () => {
                 <PasswordTextField 
                     passwordLabel="Password"
                     handlePassword={passwordChanged}/><br /><br />
-                <Button className="login-signin-button">
+                <Button className="login-signin-button" onClick={handleSignin}>
                     <i className="material-symbols-outlined">login</i>Sign in
                 </Button>
             </form>
+            <Toaster />
         </>
     );
 }
