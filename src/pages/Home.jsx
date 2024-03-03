@@ -1,9 +1,10 @@
 import { Outlet } from "react-router-dom";
+import { Navbar } from "../components/Navbar/Navbar";
 
 export const Home = () => {
     return (
         <>
-            <h3>Home</h3>
+            <Navbar />
             <Outlet />
         </>
     );
