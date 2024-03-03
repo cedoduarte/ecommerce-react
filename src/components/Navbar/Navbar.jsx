@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -18,6 +19,7 @@ import Person2Icon from '@mui/icons-material/Person2';
 import SettingsIcon from '@mui/icons-material/Settings';
 
 export const Navbar = () => {
+    const navigate = useNavigate();
     const [open, setOpen] = useState(false);
 
     const toggleDrawer = (newOpen) => () => {
@@ -25,19 +27,23 @@ export const Navbar = () => {
     };
     
     const stockClicked = () => {
-        console.log("stock clicked...");
+        navigate("/stock");
     }
     
     const profileClicked = () => {
-        console.log("profile clicked...");
+        navigate("/profile");
     }
     
     const settingClicked = () => {
-        console.log("setting clicked...");
+        navigate("/setting");
     }
 
     const signoutClicked = () => {
         console.log("signout clicked...");
+    }
+
+    const shoppingCartClicked = () => {
+        navigate("/shopping-cart");
     }
 
     return (
@@ -55,9 +61,11 @@ export const Navbar = () => {
                             <MenuIcon />
                         </IconButton>
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                            News
+                            ECOMMERCE
                         </Typography>
-                        <Button color="inherit">Login</Button>
+                        <Button color="inherit" onClick={shoppingCartClicked}>
+                            <i className="material-symbols-outlined">shopping_cart</i>
+                        </Button>
                     </Toolbar>
                 </AppBar>
             </Box>

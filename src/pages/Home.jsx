@@ -1,7 +1,16 @@
 import { Outlet } from "react-router-dom";
 import { Navbar } from "../components/Navbar/Navbar";
+import withAuth from "../components/Util/withAuth";
+import { useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 
-export const Home = () => {
+const Home = () => {
+    const navigate = useNavigate();
+    
+    useEffect(() => {
+        navigate("/poster");
+    }, []);
+
     return (
         <>
             <Navbar />
@@ -9,3 +18,5 @@ export const Home = () => {
         </>
     );
 }
+
+export default withAuth(Home);
