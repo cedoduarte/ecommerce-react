@@ -12,6 +12,22 @@ import { changeUser } from "../../store/userSlice";
 export const Login = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
+    const usernameChanged = (event) => {
+        setUsername(event.target.value);
+    }
+
+    const passwordChanged = (event) => {
+        setPassword(event.target.value);
+    }
+
+    const keyPressed = async (event) => {
+        if (event.key === "Enter") {
+            await fetchSignin();
+        }
+    }
 
     const handleSignin = async () => {
         await fetchSignin();
@@ -46,17 +62,6 @@ export const Login = () => {
         });
     }
 
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-
-    const usernameChanged = (event) => {
-        setUsername(event.target.value);
-    }
-
-    const passwordChanged = (event) => {
-        setPassword(event.target.value);
-    }
-
     return (
         <>
             <form className="login-form">
@@ -69,10 +74,11 @@ export const Login = () => {
                     className="login-field" 
                     variant="outlined" 
                     placeholder="Username"
-                    onInput={usernameChanged}/><br /><br />
+                    onInput={usernameChanged} /><br /><br />
                 <PasswordTextField 
                     passwordLabel="Password"
-                    handlePassword={passwordChanged}/><br /><br />
+                    handlePassword={passwordChanged}
+                    handleKeyPressed={keyPressed} /><br /><br />
                 <Button className="login-signin-button" onClick={handleSignin}>
                     <i className="material-symbols-outlined">login</i>Sign in
                 </Button>

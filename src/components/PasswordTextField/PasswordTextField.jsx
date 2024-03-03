@@ -3,7 +3,7 @@ import { IconButton, InputAdornment, TextField } from "@mui/material";
 import { useState } from "react";
 import "./PasswordTextField.css";
 
-export const PasswordTextField = ({ passwordLabel, handlePassword }) => {
+export const PasswordTextField = ({ passwordLabel, handlePassword, handleKeyPressed }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => {
@@ -16,6 +16,7 @@ export const PasswordTextField = ({ passwordLabel, handlePassword }) => {
       type={showPassword ? "text" : "password"}
       label={passwordLabel}
       onChange={handlePassword}
+      onKeyDown={handleKeyPressed}
       required={true}
       InputProps={{
         endAdornment: (

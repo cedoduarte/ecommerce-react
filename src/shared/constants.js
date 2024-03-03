@@ -4,7 +4,22 @@ export const ENVIRONMENT = "development";
 
 export const API_BASE_URL = ENVIRONMENT === "development" ? "https://localhost:7276/api" : "https://production/api";
 
+export const URL_USER_CHANGE_PASSWORD = `${API_BASE_URL}/User/change-password`;
+export const URL_USER_CREATE = `${API_BASE_URL}/User/create`;
+export const URL_USER_DELETE = `${API_BASE_URL}/User/delete`;
+export const URL_ACCOUNT_DELETE = `${API_BASE_URL}/User/delete-account`;
+export const URL_USER_RESTORE = `${API_BASE_URL}/User/restore`;
 export const URL_USER_SIGNIN = `${API_BASE_URL}/User/signin`;
+export const URL_USER_UPDATE = `${API_BASE_URL}/User/update`;
+export const URL_USER_GET_BY_ID = `${API_BASE_URL}/User/get-by-id`;
+export const URL_USER_GET_LIST = `${API_BASE_URL}/User/get-list`;
+
+export const URL_PRODUCT_CREATE = `${API_BASE_URL}/Product/create`;
+export const URL_PRODUCT_DELETE = `${API_BASE_URL}/Product/delete`;
+export const URL_PRODUCT_RESTORE = `${API_BASE_URL}/Product/restore`;
+export const URL_PRODUCT_UPDATE = `${API_BASE_URL}/Product/update`;
+export const URL_PRODUCT_GET_BY_ID = `${API_BASE_URL}/Product/get-by-id`;
+export const URL_PRODUCT_GET_LIST = `${API_BASE_URL}/Product/get-list`;
 
 export const countryList = [
     "Afghanistan",
@@ -117,7 +132,7 @@ export const countryList = [
     "Marshall Islands",
     "Mauritania",
     "Mauritius",
-    "Mexico",
+    "México",
     "Micronesia",
     "Moldova",
     "Monaco",

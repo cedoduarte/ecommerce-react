@@ -17,9 +17,12 @@ import CloseIcon from "@mui/icons-material/Close";
 import InventoryIcon from '@mui/icons-material/Inventory';
 import Person2Icon from '@mui/icons-material/Person2';
 import SettingsIcon from '@mui/icons-material/Settings';
+import { useDispatch } from "react-redux";
+import { changeUser } from "../../store/userSlice";
 
 export const Navbar = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [open, setOpen] = useState(false);
 
     const toggleDrawer = (newOpen) => () => {
@@ -39,6 +42,10 @@ export const Navbar = () => {
     }
 
     const signoutClicked = () => {
+        dispatch(changeUser({
+            loggedin: false,
+            user: null
+        }));
         navigate("/login");
     }
 
