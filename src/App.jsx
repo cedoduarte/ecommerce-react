@@ -4,7 +4,7 @@ import { Poster } from "./pages/Poster/Poster";
 import { Login } from "./pages/Login/Login";
 import { Profile } from "./pages/Profile/Profile";
 import { Setting } from "./pages/Setting/Setting";
-import { ShoppingCart } from "./pages/ShoppingCart";
+import { ShoppingCart } from "./pages/ShoppingCart/ShoppingCart";
 import { Stock } from "./pages/Stock/Stock";
 import { Outlet, Route, Routes } from "react-router-dom";
 

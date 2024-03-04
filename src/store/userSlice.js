@@ -19,5 +19,5 @@ export const userSlice = createSlice({
     }
 });
 
-export const { changeUser, loadUserFromLocalStorage } = userSlice.actions;
+export const { changeUser } = userSlice.actions;
 export default userSlice.reducer;

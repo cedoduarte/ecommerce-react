@@ -5,8 +5,10 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import { formatAsCurrency } from "../../shared/utils";
+import { useDispatch } from "react-redux";
+import { appendProduct } from "../../store/shoppingCartSlice";
 
-export const ProductCard = ({
+export const ProductCard = ({ 
     id,
     name,
     description,
@@ -17,8 +19,22 @@ export const ProductCard = ({
     createdDate,
     isDeleted
 }) => {
+    const dispatch = useDispatch();
+
     const handleAddToShoppingCart = () => {
-        console.log("id: " + id);// todo... add to redux
+        dispatch(appendProduct({
+            product: {
+                id,
+                name,
+                description,
+                price,
+                stock,
+                imagehref,
+                lastModified,
+                createdDate,
+                isDeleted
+            }
+        }));
     }
 
     return (

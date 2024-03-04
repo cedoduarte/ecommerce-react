@@ -126,7 +126,6 @@ export const Profile = () => {
             }));
             toast.success("Profile edited successfully!");
         }).catch(errorObject => {
-            console.log(errorObject.message);
             toast.error(errorObject.message.substring(18, errorObject.message.indexOf("!") + 1));
         });
     }
