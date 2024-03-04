@@ -56,7 +56,6 @@ export const DeleteAccount = () => {
             }
             return response.json();
         }).then(data => {
-            toast.success("Your account has beed deleted successfully!");
             dispatch(changeUser({
                 loggedin: false,
                 user: null
