@@ -2,7 +2,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import "./Profile.css";
 import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { changeUser } from "../../store/userSlice";
 import { fixDateFormat } from "../../shared/utils";
 import { countryList } from "../../shared/constants";

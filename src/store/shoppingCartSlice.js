@@ -39,9 +39,19 @@ export const shoppingCartSlice = createSlice({
             });
             localStorage.setItem("productList", JSON.stringify(state.productList));
             localStorage.setItem("total", JSON.stringify(state.total));
+        },
+        removeProduct: (state, action) => {
+            const { productId } = action.payload;
+            state.productList = state.productList.filter(iProduct => iProduct.product.id !== productId);
+            state.total = 0.0;
+            state.productList.forEach(iProduct => {
+                state.total += iProduct.total;
+            });
+            localStorage.setItem("productList", JSON.stringify(state.productList));
+            localStorage.setItem("total", JSON.stringify(state.total));
         }
     }
 });
 
-export const { changeShoppingCart, appendProduct } = shoppingCartSlice.actions;
+export const { changeShoppingCart, appendProduct, removeProduct } = shoppingCartSlice.actions;
 export default shoppingCartSlice.reducer;

@@ -7,6 +7,7 @@ import { Button, CardActionArea, CardActions } from '@mui/material';
 import { formatAsCurrency } from "../../shared/utils";
 import { useDispatch } from "react-redux";
 import { appendProduct } from "../../store/shoppingCartSlice";
+import toast, { Toaster } from "react-hot-toast";
 
 export const ProductCard = ({ 
     id,
@@ -35,6 +36,7 @@ export const ProductCard = ({
                 isDeleted
             }
         }));
+        toast.success("Product added to 'Shopping Cart'");
     }
 
     return (
@@ -63,6 +65,7 @@ export const ProductCard = ({
                     </Button>
                 </CardActions>
             </Card>
+            <Toaster />
         </>
     );
 }
